@@ -1,0 +1,19 @@
+{
+    "name": "modifyClusterTrigger",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "UPDATE",
+            "REPLACE"
+        ],
+        "database": "configurator",
+        "collection": "configs",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "project": {},
+        "full_document": true,
+        "unordered": false
+    },
+    "function_name": "modifyClusterTriggerFunc",
+    "disabled": false
+}
