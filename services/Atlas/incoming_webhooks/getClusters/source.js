@@ -8,7 +8,7 @@
  * Response - Currently all values documented at https://docs.atlas.mongodb.com/reference/api/clusters-get-all/
  *
  */
- exports = async function(payload, response) {
+ exports = async function(payload, response) { 
 
   var results = [];
   
@@ -22,18 +22,10 @@
   
   results = response.results;
   
-  console.log(EJSON.stringify(results));
+  console.log(context.activeuser);
   
- /* Let the front-end decide what attributes it wants
- for (var i=0; i < results.length; i++ ) {
-    var cluster = results[i];
-    console.log(cluster.connectionStrings.standardSrv);
-    console.log(cluster.name);
-    console.log(cluster.paused);
-    console.log(cluster.providerSettings.instanceSizeName);
-    console.log(cluster.diskSizeGB);
-  }
-  */
+  console.log(EJSON.stringify(results));
+
 
   return results;
 

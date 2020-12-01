@@ -1,0 +1,38 @@
+{
+    "name": "oauth2-google",
+    "type": "oauth2-google",
+    "config": {
+        "clientId": "1020203019334-4l5hjs9ahkv9pk03db4imf4rb7crnfm3.apps.googleusercontent.com"
+    },
+    "secret_config": {
+        "clientSecret": "GoogleOAuthClientSecret"
+    },
+    "disabled": false,
+    "metadata_fields": [
+        {
+            "required": false,
+            "name": "first_name"
+        },
+        {
+            "required": false,
+            "name": "last_name"
+        },
+        {
+            "required": false,
+            "name": "picture"
+        },
+        {
+            "required": false,
+            "name": "email"
+        },
+        {
+            "required": false,
+            "name": "name"
+        }
+    ],
+    "redirect_uris": [
+        "https://atlasconfigurator-xyznk.mongodbstitch.com/login.html",
+        "http://localhost:8080/login",
+        "http://localhost:5000/login"
+    ]
+}

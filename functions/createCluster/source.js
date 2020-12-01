@@ -26,7 +26,7 @@ exports = async function(username, password, projectID, body) {
   if (response.status == "201 Created") {
     return response; 
   } else {
-    throw response;
+    return response;
   }
 
 };

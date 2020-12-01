@@ -11,10 +11,19 @@
  exports = async function(payload, response) {
    
   // Example Console input for testing
-  // exports({body: BSON.Binary.fromText('{"clusterName": "testCluster1", "clusterDescription": "Dev Prototype", "instandeSizeName" : "M10","diskSizeGB": 10  }')})
+  // exports({body: BSON.Binary.fromText('{"clusterName": "testCluster1", "clusterDescription": "Dev Prototype", "instanceSizeName": "M10","diskSizeGB": 10, "mongoDBVersion": "4.2"}')})
 
   var result = {};
   
+  // Get Context (calling) user...
+  const clusterOwner = context.user.data.name + " - " + context.user.data.email;
+  console.log("clusterOnwer:" + clusterOwner);
+  
+  // Get the date
+  let today = new Date().toISOString().slice(0, 10);
+
+  console.log(today);
+
   const username = context.values.get("username");
   const password = context.values.get("apiKey");
   projectID = context.values.get("projectID");
@@ -26,15 +35,16 @@
     console.log("Parsed Payload body: ", JSON.stringify(config));
 
     console.log(config.clusterDescription);
-    const clusterDescription = "'"+ config.clusterDescription + "'"
+    //const clusterDescription = "'"+ config.clusterDescription + "'"
     
     body = {
         "name": config.clusterName,
         "diskSizeGB": config.diskSizeGB,
+        "mongoDBMajorVersion": config.mongoDBVersion,
         "numShards": 1,
         "providerSettings": {
             "providerName": "GCP",
-            "instanceSizeName": "M10",
+            "instanceSizeName": config.instanceSizeName,
             "regionName": "NORTH_AMERICA_NORTHEAST_1"
         },
         "providerBackupEnabled": false,
@@ -44,10 +54,19 @@
       "labels": [
          {
            "key": "clusterDescription",
-           "value": clusterDescription
-         }
+           "value": config.clusterDescription
+         },
+         {
+           "key": "clusterOwner",
+           "value": clusterOwner
+         },
+         {
+           "key": "dateCreated",
+           "value": today
+         }      
        ]
     };
+    
   
     result = await context.functions.execute("createCluster", username, password, projectID, body);
     console.log(EJSON.stringify(result));
@@ -56,6 +75,7 @@
     if (result.statusCode == 201) {
       
       // Store the cluster configuration
+      console.log("Recording the cluster config");
       
       // Get a reference to the configs database and collection...
       var collection = context.services.get("mongodb-atlas").db("configurator").collection("configs");
@@ -74,10 +94,10 @@
       return EJSON.parse(result.body.text());
       
     } else {
-      throw result; 
+      EJSON.parse(result.body.text()); 
     }
   }
   
-  return result;
+  return EJSON.parse(result.body.text());
   
 };
