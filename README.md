@@ -9,7 +9,7 @@ This BaaS exposes the following APIs:
 * [Get Clusters](./docs/atlas/getClusters.md) : `GET /atlas/getClusters/`
 * [Create a Cluster](./docs/atlas/createCluster.md) : `POST /atlas/getClusters/`
 * [Get Cluster State](./docs/atlas/getClusterState.md): `GET /atlas/getClusterState?clusterName:cn`
-* [Modify a Cluster](./docs/atlas/modifyCluster.md) : `PATCH /atlas/getClusterState`
+* [Modify a Cluster](./docs/atlas/modifyCluster.md) : `PATCH /atlas/modifyCluster`
 * [Pause or Resume Cluster](./docs/atlas/pauseCluster.md) : `POST /atlas/pauseCluster`
 * [Delete a Cluster](./docs/atlas/deleteCluster.md) : `DELETE /atlas/deleteCluster?clusterName:cn`
 
