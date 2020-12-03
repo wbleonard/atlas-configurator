@@ -1,6 +1,6 @@
-# Get Clusters
+# Create a Cluster
 
-Get a list of all the deployed clusters/
+Creates a cluster.
 
 **URI** : `/atlas/createCluster/`
 

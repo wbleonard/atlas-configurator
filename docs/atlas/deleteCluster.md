@@ -1,4 +1,4 @@
-# Get Clusters
+# Delete a Cluster
 Deletes a cluster.
 
 **URI** : `/atlas/deleteCluster/?clusterName=:cn`

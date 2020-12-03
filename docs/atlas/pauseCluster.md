@@ -1,4 +1,4 @@
-# Get Clusters
+# Pause or Resume a Cluster
 
 Pause or resume a cluster.
 

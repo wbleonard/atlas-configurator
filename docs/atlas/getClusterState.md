@@ -1,4 +1,4 @@
-# Get Clusters
+# Get Cluster State
 
 Get's the state of a cluster. The possible states are:
 * IDLE

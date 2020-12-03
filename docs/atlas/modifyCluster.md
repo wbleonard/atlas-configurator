@@ -1,6 +1,6 @@
-# Get Clusters
+# Modify a Cluster
 
-Get a list of all the deployed clusters/
+Modify a deployed cluster.
 
 **URI** : `/atlas/modifyCluster/`
 
